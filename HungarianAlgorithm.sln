@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hungarian2", "Hungarian2\Hu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kukn-Munkres", "Kukn-Munkres\Kukn-Munkres.csproj", "{D06C2352-4174-477D-B86B-922ADC6078BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kukn-Numkers2_좌표정보", "kukn-Numkers2_좌표정보\kukn-Numkers2_좌표정보.csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D06C2352-4174-477D-B86B-922ADC6078BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D06C2352-4174-477D-B86B-922ADC6078BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D06C2352-4174-477D-B86B-922ADC6078BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
