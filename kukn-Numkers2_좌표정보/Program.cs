@@ -201,18 +201,70 @@ class KuhnMunkres
         return result;
     }
 
+    static ((int, int)[], (int, int)[]) LoadInputFromFile(string filename, out int n, out int m)
+    {
+        var lines = File.ReadAllLines(filename);
+        var firstLine = lines[0].Split();
+        n = int.Parse(firstLine[0]);
+        m = int.Parse(firstLine[1]);
+
+        var workers = new (int, int)[n];
+        var tasks = new (int, int)[m];
+
+        for (int i = 0; i < n; i++)
+        {
+            var coords = lines[i + 1].Split();
+            workers[i] = (int.Parse(coords[0]), int.Parse(coords[1]));
+        }
+        for (int i = 0; i < m; i++)
+        {
+            var coords = lines[i + 1 + n].Split();
+            tasks[i] = (int.Parse(coords[0]), int.Parse(coords[1]));
+        }
+        return (workers, tasks);
+    }
+    static void SaveInputToFile(int n, int m, (int, int)[] workers, (int, int)[] tasks)
+    {
+        try
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "input.txt");
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine($"{n} {m}");
+                foreach (var worker in workers)
+                    writer.WriteLine($"{worker.Item1} {worker.Item2}");
+                foreach (var task in tasks)
+                    writer.WriteLine($"{task.Item1} {task.Item2}");
+            }
+            Console.WriteLine($"파일 저장 완료: {filePath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"파일 저장 실패: {ex.Message}");
+        }
+    }
+
     static void Main()
     {
+#if true
+
+        int n, m;
+        var (workers, tasks) = LoadInputFromFile("input.txt", out n, out m);
+        int[,] costs = ComputeCostMatrix(workers, tasks);
+
+#else
+
         Console.Write("작업 수 입력: ");
         int n = int.Parse(Console.ReadLine());
         Console.Write("AGV 수 입력: ");
         int m = int.Parse(Console.ReadLine());
 
-       
+
         var workers = GenerateRandomPositions(n);
         var tasks = GenerateRandomPositions(m);
         int[,] costs = ComputeCostMatrix(workers, tasks);
 
+#endif
         Console.WriteLine("\n노동자 위치:");
         for (int i = 0; i < n; i++)
             Console.WriteLine($"노동자 {i + 1}: ({workers[i].Item1}, {workers[i].Item2})");
@@ -221,6 +273,7 @@ class KuhnMunkres
         for (int j = 0; j < m; j++)
             Console.WriteLine($"작업 {j + 1}: ({tasks[j].Item1}, {tasks[j].Item2})");
 
+        SaveInputToFile(n,m, workers, tasks);
         Console.WriteLine("\n비용 행렬:");
         for (int i = 0; i < n; i++)
         {
@@ -234,13 +287,18 @@ class KuhnMunkres
         int[,] costMatrix = CreateCostMatrix(costs, n, m);
         int[] assignment = HungarianAlgorithm(costMatrix, n, m);
 
+        int totalCost = 0;
         Console.WriteLine("\n최적의 작업 할당:");
         for (int i = 0; i < n; i++)
         {
             if (assignment[i] == -1)
                 Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV 없음");
             else
-                Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV {assignment[i] + 1} ({tasks[assignment[i]].Item1}, {tasks[assignment[i]].Item2})");
+            {
+                Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV {assignment[i] + 1} ({tasks[assignment[i]].Item1}, {tasks[assignment[i]].Item2}) : 거리:{costMatrix[i, assignment[i]]}");
+                totalCost += costMatrix[i, assignment[i]];
+            }
         }
+        Console.WriteLine($"\n총 거리 비용: {totalCost}");
     }
 }
