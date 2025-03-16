@@ -3,6 +3,20 @@ using System.Linq;
 
 class KuhnMunkres
 {
+    static int[,] GenerateRandomCostMatrix(int n, int m)
+    {
+        Random rand = new Random();
+        int[,] costs = new int[n, m];
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                costs[i, j] = rand.Next(1, 100); // 1~99 사이의 랜덤 값
+            }
+        }
+        return costs;
+    }
+
     static int[,] CreateCostMatrix(int[,] costs)
     {
         int n = costs.GetLength(0);
@@ -17,7 +31,7 @@ class KuhnMunkres
                 if (i < n && j < m)
                     costMatrix[i, j] = costs[i, j];
                 else
-                    costMatrix[i, j] = 1000000; // 더미 값 (int.MaxValue 대신 큰 값 사용)
+                    costMatrix[i, j] = 1000000; // 더미 값
             }
         }
         return costMatrix;
@@ -92,24 +106,36 @@ class KuhnMunkres
 
     static void Main()
     {
-        int[,] costs =
+        Console.Write("노동자 수 입력: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("작업 수 입력: ");
+        int m = int.Parse(Console.ReadLine());
+
+        int[,] costs = GenerateRandomCostMatrix(n, m);
+        Console.WriteLine("\n생성된 비용 행렬:");
+        for (int i = 0; i < n; i++)
         {
-            {3, 8, 9,5},
-            {4, 12, 7,4},
-            {4, 8, 5, 5  },
-            {3, 2, 4, 12  },
-            {13,22,34,22  }
-
-
-        };
+            for (int j = 0; j < m; j++)
+            {
+                Console.Write(costs[i, j].ToString().PadLeft(4));
+            }
+            Console.WriteLine();
+        }
 
         int[,] costMatrix = CreateCostMatrix(costs);
         int[] assignment = HungarianAlgorithm(costMatrix);
 
-        Console.WriteLine("최적의 작업 할당:");
-        for (int i = 0; i < costs.GetLength(0); i++)
+        Console.WriteLine("\n최적의 작업 할당:");
+        for (int i = 0; i < n; i++)
         {
-            Console.WriteLine($"노동자 {i + 1} → 작업 {assignment[i] + 1}");
-        }
+            if (assignment[i] < m)
+            {
+                Console.WriteLine($"노동자 {i + 1} → 작업 {assignment[i] + 1}");
+            }
+            else
+            {
+                Console.WriteLine($"노동자 {i + 1} → 작업 없음");
+            }
+        } 
     }
 }
