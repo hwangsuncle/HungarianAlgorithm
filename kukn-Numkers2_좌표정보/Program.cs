@@ -263,6 +263,7 @@ class KuhnMunkres
         var workers = GenerateRandomPositions(n);
         var tasks = GenerateRandomPositions(m);
         int[,] costs = ComputeCostMatrix(workers, tasks);
+        SaveInputToFile(n,m, workers, tasks);
 
 #endif
         Console.WriteLine("\n노동자 위치:");
@@ -273,7 +274,7 @@ class KuhnMunkres
         for (int j = 0; j < m; j++)
             Console.WriteLine($"작업 {j + 1}: ({tasks[j].Item1}, {tasks[j].Item2})");
 
-        SaveInputToFile(n,m, workers, tasks);
+       
         Console.WriteLine("\n비용 행렬:");
         for (int i = 0; i < n; i++)
         {
