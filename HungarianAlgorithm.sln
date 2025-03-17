@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HungarianAlgorithm", "HungarianAlgorithm\HungarianAlgorithm.csproj", "{61E65E84-DAD0-4962-A437-BE81F853B79C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hungarian2", "Hungarian2\Hungarian2.csproj", "{B387F7E1-9697-4551-890B-79E501BBB010}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kukn-Munkres", "Kukn-Munkres\Kukn-Munkres.csproj", "{D06C2352-4174-477D-B86B-922ADC6078BA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kukn-Numkers2_좌표정보(최종)", "kukn-Numkers2_좌표정보\kukn-Numkers2_좌표정보(최종).csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "greedy", "greedy\greedy.csproj", "{46857DA8-1336-4D5E-AA52-565FC0F44118}"
@@ -21,18 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{61E65E84-DAD0-4962-A437-BE81F853B79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61E65E84-DAD0-4962-A437-BE81F853B79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61E65E84-DAD0-4962-A437-BE81F853B79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61E65E84-DAD0-4962-A437-BE81F853B79C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B387F7E1-9697-4551-890B-79E501BBB010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B387F7E1-9697-4551-890B-79E501BBB010}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B387F7E1-9697-4551-890B-79E501BBB010}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B387F7E1-9697-4551-890B-79E501BBB010}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D06C2352-4174-477D-B86B-922ADC6078BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D06C2352-4174-477D-B86B-922ADC6078BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D06C2352-4174-477D-B86B-922ADC6078BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D06C2352-4174-477D-B86B-922ADC6078BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}.Release|Any CPU.ActiveCfg = Release|Any CPU
