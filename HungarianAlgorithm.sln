@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kukn-Mumkers2_좌표정보(최종)", "kukn-Numkers2_좌표정보\kukn-Mumkers2_좌표정보(최종).csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.kukn-Mumkers2_좌표정보(최종)", "kukn-Numkers2_좌표정보\1.kukn-Mumkers2_좌표정보(최종).csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "greedy", "greedy\greedy.csproj", "{46857DA8-1336-4D5E-AA52-565FC0F44118}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.greedy", "greedy\2.greedy.csproj", "{46857DA8-1336-4D5E-AA52-565FC0F44118}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "priority_queue", "priority_queue\priority_queue.csproj", "{EEB6282D-9752-4923-9130-4CB3D005382B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.greedy_priority_queue", "priority_queue\3.greedy_priority_queue.csproj", "{EEB6282D-9752-4923-9130-4CB3D005382B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

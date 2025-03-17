@@ -27,7 +27,7 @@ class Program
 
     static void Main(string[] args)
     {
-        string[] lines = File.ReadAllLines("C:\\Users\\황광순\\source\\repos\\HungarianAlgorithm2\\kukn-Numkers2_좌표정보\\bin\\Debug\\net8.0\\input.txt");
+        string[] lines = File.ReadAllLines("..\\..\\..\\..\\kukn-Numkers2_좌표정보\\bin\\Debug\\net8.0\\input.txt");
 
         string[] firstLine = lines[0].Split(' ');
         int N = int.Parse(firstLine[0]);

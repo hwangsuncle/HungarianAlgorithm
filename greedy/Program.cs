@@ -1,5 +1,11 @@
 ﻿#if true
-// 탐욕   알고리즘을 사용한 택시 배정 문제
+//
+//  헝그리안 알고리즘과 비교하기 위함
+//   탐욕   알고리즘을 사용한 택시 배정 문제
+//  1.kukn-Numkers2_좌표정보 의  hungarianAlgorithm.cs  먼저 실행한 후 실행하면 된다. 
+//  현재 task 배정에서 가장 가까운 avg 에 배정 한다. 
+//
+
 using System;
 
 class Program
@@ -7,7 +13,7 @@ class Program
     static void Main(string[] args)
     {
         // 파일에서 입력 읽기
-        string[] lines = File.ReadAllLines("C:\\Users\\황광순\\source\\repos\\HungarianAlgorithm2\\kukn-Numkers2_좌표정보\\bin\\Debug\\net8.0\\input.txt");
+        string[] lines = File.ReadAllLines("..\\..\\..\\..\\kukn-Numkers2_좌표정보\\bin\\Debug\\net8.0\\input.txt");
 
         // N과 M 읽기
         string[] firstLine = lines[0].Split(' ');
@@ -77,7 +83,7 @@ class Program
         {
             double minDistance = double.MaxValue;
             int selectedTaxi = -1;
-
+            //현재 가용한 AVG 택시 중에서 가장 가까운 택시 선택
             for (int j = 0; j < M; j++)
             {
                 if (!assignedTaxis[j] && distanceMatrix[i, j] < minDistance)
