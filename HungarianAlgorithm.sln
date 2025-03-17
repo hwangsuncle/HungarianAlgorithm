@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hungarian2", "Hungarian2\Hu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kukn-Munkres", "Kukn-Munkres\Kukn-Munkres.csproj", "{D06C2352-4174-477D-B86B-922ADC6078BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kukn-Numkers2_좌표정보", "kukn-Numkers2_좌표정보\kukn-Numkers2_좌표정보.csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kukn-Numkers2_좌표정보(최종)", "kukn-Numkers2_좌표정보\kukn-Numkers2_좌표정보(최종).csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "greedy", "greedy\greedy.csproj", "{46857DA8-1336-4D5E-AA52-565FC0F44118}"
 EndProject
