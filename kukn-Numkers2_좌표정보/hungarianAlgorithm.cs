@@ -1,4 +1,4 @@
-﻿#if false
+﻿#if true
 using System;
 using System.Linq;
 
@@ -182,13 +182,16 @@ class KuhnMunkres
     static void Main()
     {
 #if false
-
+        // file 에서 읽어 들임
         int n, m;
         var (workers, tasks) = LoadInputFromFile("input.txt", out n, out m);
         int[,] costs = ComputeCostMatrix(workers, tasks);
 
 #else
-
+        //
+       // 램덤하게 생성하고   입력 데이터를 파일로   저장
+       // 이 input file 로 다른  로직과 비교하기 위함
+       //
         Console.Write("작업 수 입력: ");
         int n = int.Parse(Console.ReadLine());
         Console.Write("AGV 수 입력: ");
@@ -198,12 +201,12 @@ class KuhnMunkres
         var workers = GenerateRandomPositions(n);
         var tasks = GenerateRandomPositions(m);
         int[,] costs = ComputeCostMatrix(workers, tasks);
-        SaveInputToFile(n, m, workers, tasks);
+        SaveInputToFile(n,m, workers, tasks);
 
 #endif
-        Console.WriteLine("\nTask 위치:");
+        Console.WriteLine("\n작업(task) 위치:");
         for (int i = 0; i < n; i++)
-            Console.WriteLine($"Task {i + 1}: ({workers[i].Item1}, {workers[i].Item2})");
+            Console.WriteLine($"작업(task) {i + 1}: ({workers[i].Item1}, {workers[i].Item2})");
 
         Console.WriteLine("\nAGV 위치:");
         for (int j = 0; j < m; j++)
@@ -224,7 +227,7 @@ class KuhnMunkres
         int[] assignment = HungarianAlgorithm(costMatrix, n, m);
 
         int totalCost = 0;
-        Console.WriteLine("\n최적의 작업 할당:");
+        Console.WriteLine("\n최적의 AGV 할당:");
         for (int i = 0; i < n; i++)
         {
             if (assignment[i] == -1)
