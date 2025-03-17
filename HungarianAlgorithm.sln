@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kukn-Numkers2_좌표정보(최종)", "kukn-Numkers2_좌표정보\kukn-Numkers2_좌표정보(최종).csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kukn-Mumkers2_좌표정보(최종)", "kukn-Numkers2_좌표정보\kukn-Mumkers2_좌표정보(최종).csproj", "{4AE8FC8B-D0A7-4E95-B540-2D2BF5FCB484}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "greedy", "greedy\greedy.csproj", "{46857DA8-1336-4D5E-AA52-565FC0F44118}"
 EndProject

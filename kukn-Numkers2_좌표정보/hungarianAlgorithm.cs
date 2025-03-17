@@ -41,7 +41,7 @@ class KuhnMunkres
                 if (i < n && j < m)
                     costMatrix[i, j] = costs[i, j];
                 else
-                    costMatrix[i, j] = 1000000; // 더미 값
+                    costMatrix[i, j] = 1000000; // 더미 값  상화에 맞게 설정하되   INT_MAX 보다 작은 값으로 설정... max + alpha 발생 over flow 남
             }
         }
         return costMatrix;
