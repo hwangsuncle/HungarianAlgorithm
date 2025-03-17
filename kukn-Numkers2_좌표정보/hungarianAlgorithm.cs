@@ -1,4 +1,15 @@
 ﻿#if true
+//
+// Tasks --> AGVs  최소 비용(거리) 할당(매칭) 
+//
+// 헝그리안 알고리즘을 이용한  방법
+// 이프로그램을 실행하여  Task  N개와 AGV M개를 입력하면  자동의  위치 좌표(0~999) X,Y 를 생성하고 input.txt 저장 
+// 
+//  나머지  2.greedy , 3. greedy_priority_queue 에서 실행하여  1.hungarian Algorithm 과 비교할 수 있다. 
+//
+//  입력예  N:5, M:5  , 값이 클수록 성능의 차이는 크진다.
+//
+
 using System;
 using System.Linq;
 
