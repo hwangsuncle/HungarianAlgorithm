@@ -212,6 +212,7 @@ class KuhnMunkres
         var workers = GenerateRandomPositions(n);
         var tasks = GenerateRandomPositions(m);
         int[,] costs = ComputeCostMatrix(workers, tasks);
+
         SaveInputToFile(n,m, workers, tasks);
 
 #endif

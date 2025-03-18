@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.greedy", "greedy\2.greedy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.greedy_priority_queue", "priority_queue\3.greedy_priority_queue.csproj", "{EEB6282D-9752-4923-9130-4CB3D005382B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "factorial", "factorial\factorial.csproj", "{0C6EC9C1-EF73-4A2A-9DF3-4035D126323A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EEB6282D-9752-4923-9130-4CB3D005382B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEB6282D-9752-4923-9130-4CB3D005382B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEB6282D-9752-4923-9130-4CB3D005382B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C6EC9C1-EF73-4A2A-9DF3-4035D126323A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C6EC9C1-EF73-4A2A-9DF3-4035D126323A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C6EC9C1-EF73-4A2A-9DF3-4035D126323A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C6EC9C1-EF73-4A2A-9DF3-4035D126323A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
