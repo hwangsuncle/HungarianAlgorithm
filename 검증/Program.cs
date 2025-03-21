@@ -13,7 +13,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-
+using HungarianAlgorithm;
 class KuhnMunkres
 {
     static Random rand = new Random();
@@ -190,76 +190,137 @@ class KuhnMunkres
             Console.WriteLine($"파일 저장 실패: {ex.Message}");
         }
     }
+    public static int[,] DeepCopyUsingBlockCopy(int[,] original)
+    {
+        int rows = original.GetLength(0);
+        int cols = original.GetLength(1);
+        int[,] copy = new int[rows, cols];
+
+        Buffer.BlockCopy(original, 0, copy, 0, original.Length * sizeof(int));
+        return copy;
+    }
 
     static void Main()
     {
+        int tc = 1, TC = 10000;
+        rand = new Random();
+        int errorCount = 0;
+       
+        while (tc <=TC)
+        {
+           
+            int n = rand.Next(10, 200);
+            int m = rand.Next(30, 200);
+            Console.WriteLine($"\nN:{n}, M:{m}");
+            var workers = GenerateRandomPositions(n);
+            var tasks = GenerateRandomPositions(m);
+            int[,] costs = ComputeCostMatrix(workers, tasks);
 #if false
-        // file 에서 읽어 들임
-        int n, m;
-        var (workers, tasks) = LoadInputFromFile("input.txt", out n, out m);
-        int[,] costs = ComputeCostMatrix(workers, tasks);
+           
 
-#else
-        //
-       // 램덤하게 생성하고   입력 데이터를 파일로   저장
-       // 이 input file 로 다른  로직과 비교하기 위함
-       //
-        Console.Write("작업 수 입력: ");
-        int n = int.Parse(Console.ReadLine());
-        Console.Write("AGV 수 입력: ");
-        int m = int.Parse(Console.ReadLine());
+            Console.WriteLine("\n작업(task) 위치:");
+            for (int i = 0; i < n; i++)
+                Console.WriteLine($"작업(task) {i + 1}: ({workers[i].Item1}, {workers[i].Item2})");
 
-
-        var workers = GenerateRandomPositions(n);
-        var tasks = GenerateRandomPositions(m);
-        int[,] costs = ComputeCostMatrix(workers, tasks);
-
-        SaveInputToFile(n,m, workers, tasks);
+            Console.WriteLine("\nAGV 위치:");
+            for (int j = 0; j < m; j++)
+                Console.WriteLine($"AGV {j + 1}: ({tasks[j].Item1}, {tasks[j].Item2})");
 
 #endif
-        Console.WriteLine("\n작업(task) 위치:");
-        for (int i = 0; i < n; i++)
-            Console.WriteLine($"작업(task) {i + 1}: ({workers[i].Item1}, {workers[i].Item2})");
+#if true
 
-        Console.WriteLine("\nAGV 위치:");
-        for (int j = 0; j < m; j++)
-            Console.WriteLine($"AGV {j + 1}: ({tasks[j].Item1}, {tasks[j].Item2})");
-
-
-        Console.WriteLine("\n비용(거리) 행렬:");
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
+            // 최대 n개는 같은   값이 나옴
+            int samevalue = rand.Next(1, 5);
+           // Console.WriteLine($"\n같은 값:{samevalue}");
+            for (int i = 0; i < rand.Next(3,  Math.Max(4,n*m)); ++i)
             {
-                Console.Write(costs[i, j].ToString().PadLeft(5));
+                int y = rand.Next(0, n);
+                int x = rand.Next(0, m);
+                costs[y, x] = samevalue;
             }
-            Console.WriteLine();
-        }
+#endif
+          //  Console.WriteLine("\n비용(거리) 행렬:");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                 //   Console.Write(costs[i, j].ToString().PadLeft(5));
+                }
+               // Console.WriteLine();
+            }
 
-        int[,] costMatrix = CreateCostMatrix(costs, n, m);
-        // 헝가리안 알고리즘 수행
-        // 헝가리안 알고리즘 수행 시간 확인
-        Stopwatch stopwatch = new Stopwatch(); // Stopwatch 객체 생성
 
-        stopwatch.Start(); // 타이머 시작
-        int[] assignment = HungarianAlgorithm(costMatrix, n, m);
-        stopwatch.Stop(); // 타이머 정지
+            int[,] costMatrix = CreateCostMatrix(costs, n, m);
 
-        Console.WriteLine($"함수 수행 시간: {stopwatch.ElapsedMilliseconds} ms");
-    
-         int totalCost = 0;
-        Console.WriteLine("\n최적의 AGV 할당:");
-        for (int i = 0; i < n; i++)
-        {
-            if (assignment[i] == -1)
-                Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV 없음");
+
+
+            // 헝가리안 알고리즘 수행
+            // 헝가리안 알고리즘 수행 시간 확인
+            Stopwatch stopwatch = new Stopwatch(); // Stopwatch 객체 생성
+
+            stopwatch.Start(); // 타이머 시작
+            int[] assignment = HungarianAlgorithm(costMatrix, n, m);
+            stopwatch.Stop(); // 타이머 정지
+
+            Console.WriteLine($"함수 수행 시간: {stopwatch.ElapsedMilliseconds} ms");
+
+
+
+            int totalCost = 0;
+           // Console.WriteLine("\n최적의 AGV 할당:");
+            for (int i = 0; i < n; i++)
+            {
+                if (assignment[i] == -1)
+                {
+                   // Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV 없음");
+                }
+                else
+                {
+                   // Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV {assignment[i] + 1} ({tasks[assignment[i]].Item1}, {tasks[assignment[i]].Item2}) : 거리:{costMatrix[i, assignment[i]]}");
+                    totalCost += costMatrix[i, assignment[i]];
+                }
+            }
+           // Console.WriteLine($"\n총 거리 비용: {totalCost}");
+            //deep copy
+
+            int[,] costMatrix_backup = DeepCopyUsingBlockCopy(costMatrix);
+
+
+            stopwatch.Start(); // 타이머 시작
+            int[] assignment2 = costMatrix_backup.FindAssignments();
+            stopwatch.Stop(); // 타이머 정지
+
+            Console.WriteLine($"함수 수행 시간2: {stopwatch.ElapsedMilliseconds} ms");
+
+
+            int totalCost2 = 0;
+           // Console.WriteLine("\n최적의 AGV 할당:");
+            for (int i = 0; i < n; i++)
+            {
+                if (assignment2[i] >= m)
+                {
+                   // Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV 없음");
+                }
+                else
+                {
+                 //   Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV {assignment[i] + 1} ({tasks[assignment2[i]].Item1}, {tasks[assignment2[i]].Item2}) : 거리:{costMatrix[i, assignment2[i]]}");
+                    totalCost2 += costMatrix[i, assignment2[i]];
+                }
+            }
+            //Console.WriteLine($"\n총 거리 비용: {totalCost2}");
+
+            if (totalCost != totalCost2)
+            {
+                errorCount++;
+                Console.WriteLine($"{tc}:오류 발생");
+            }
             else
             {
-                Console.WriteLine($"작업 {i + 1} ({workers[i].Item1}, {workers[i].Item2}) → AGV {assignment[i] + 1} ({tasks[assignment[i]].Item1}, {tasks[assignment[i]].Item2}) : 거리:{costMatrix[i, assignment[i]]}");
-                totalCost += costMatrix[i, assignment[i]];
+                Console.WriteLine($"{tc}:성공");
             }
-        }
-        Console.WriteLine($"\n총 거리 비용: {totalCost}");
+            tc++;
+        }//while
+        Console.WriteLine($"전체 결과 오류 횟수: {errorCount}");
     }
 }
 

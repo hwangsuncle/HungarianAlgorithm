@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
@@ -62,9 +63,14 @@ class Program
         // 가능한 모든 매칭 조합을 계산하여 최소 거리 찾기
         int[] taxiIndices = Enumerable.Range(0, M).ToArray();
         //Permute(taxiIndices, 0);
+        Stopwatch stopwatch = new Stopwatch(); // Stopwatch 객체 생성
+
+        stopwatch.Start(); // 타이머 시작
         Permute2(taxiIndices, 0,0);
         // 결과 출력
-        
+        stopwatch.Stop(); // 타이머 정지
+
+        Console.WriteLine($"함수 수행 시간: {stopwatch.ElapsedMilliseconds/1000.0} sec");
         Console.WriteLine("\n최적의 매칭 조합:");
         double totalDistance = 0;
         for (int i = 0; i < N; i++)
